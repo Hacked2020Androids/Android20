@@ -24,7 +24,7 @@
             android:name=".Register"
             android:screenOrientation="portrait"
             android:configChanges="orientation|screenSize|keyboard" />
-
+        <activity android:name=".DashboardActivity" />
     </application>
 
 </manifest>

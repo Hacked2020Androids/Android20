@@ -1,6 +1,7 @@
 package com.example.myapplication;
 
 import androidx.appcompat.app.AppCompatActivity;
+import androidx.appcompat.widget.AppCompatButton;
 import androidx.appcompat.widget.AppCompatTextView;
 
 import android.content.Intent;
@@ -41,6 +42,16 @@ public class Login extends AppCompatActivity {
             public void onClick(View view) {
                 Intent signUpScreen = new Intent(Login.this, Register.class);
                 startActivity(signUpScreen);
+                finish();
+            }
+        });
+
+        final AppCompatButton loginButton = findViewById(R.id.login_btn);
+        loginButton.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View view) {
+                Intent dashBoardScreen = new Intent(Login.this, DashboardActivity.class);
+                startActivity(dashBoardScreen);
                 finish();
             }
         });
