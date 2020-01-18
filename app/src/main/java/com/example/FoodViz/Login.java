@@ -19,8 +19,6 @@ import android.widget.EditText;
 import android.widget.TextView;
 import android.widget.Toast;
 
-import com.example.myapplication.DashboardActivity;
-
 public class Login extends AppCompatActivity {
 
     @Override
@@ -65,16 +63,6 @@ public class Login extends AppCompatActivity {
             public void onClick(View view) {
                 Intent signUpScreen = new Intent(Login.this, Register.class);
                 startActivity(signUpScreen);
-                finish();
-            }
-        });
-
-        final AppCompatButton loginButton = findViewById(R.id.login_btn);
-        loginButton.setOnClickListener(new View.OnClickListener() {
-            @Override
-            public void onClick(View view) {
-                Intent dashBoardScreen = new Intent(Login.this, DashboardActivity.class);
-                startActivity(dashBoardScreen);
                 finish();
             }
         });
