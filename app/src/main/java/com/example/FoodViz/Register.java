@@ -30,13 +30,12 @@ public class Register extends AppCompatActivity {
         final String pwParsed = passwordInfo.getText().toString();
         final EditText confirmPW = findViewById(R.id.password_veri);
         final String pwVeriParsed = confirmPW.getText().toString();
-        final boolean nonEmpty = (pwParsed != "" || usernameParsed != "" || pwVeriParsed != "");
 
         final AppCompatButton registerBtn = findViewById(R.id.signup_btn);
         registerBtn.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
-                if(nonEmpty && (pwParsed!= pwVeriParsed)) {
+                if(pwParsed.toString().isEmpty() || usernameParsed.toString().isEmpty() || pwVeriParsed.toString().isEmpty()) {
                     Toast.makeText(Register.this, "Passwords Do not Match", Toast.LENGTH_SHORT).show();
                 }
                 Toast.makeText(Register.this, usernameParsed, Toast.LENGTH_SHORT).show();
