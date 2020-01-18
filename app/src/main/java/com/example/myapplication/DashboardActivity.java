@@ -17,6 +17,7 @@ import com.anychart.enums.LegendLayout;
 import java.util.ArrayList;
 import java.util.List;
 
+
 public class DashboardActivity extends AppCompatActivity {
 
     @Override
@@ -36,16 +37,18 @@ public class DashboardActivity extends AppCompatActivity {
             }
         });
 
-
-
-        List<DataEntry> data = new ArrayList<>();
-        data.add(new ValueDataEntry("Apples", 6371664));
-        data.add(new ValueDataEntry("Pears", 789622));
-        data.add(new ValueDataEntry("Bananas", 7216301));
-        data.add(new ValueDataEntry("Grapes", 1486621));
-        data.add(new ValueDataEntry("Oranges", 1200000));
+//        List<DataEntry> data = new ArrayList<>();
+//        data.add(new ValueDataEntry("Apples", 6371664));
+//        data.add(new ValueDataEntry("Pears", 789622));
+//        data.add(new ValueDataEntry("Bananas", 7216301));
+//        data.add(new ValueDataEntry("Grapes", 1486621));
+//        data.add(new ValueDataEntry("Oranges", 1200000));
+        DatabaseParser dataBaseParser = new DatabaseParser();
+        List<DataEntry> data = dataBaseParser.pieChartData();
 
         pie.data(data);
+
+        dataBaseParser.selectAll();
 
         pie.title("Fruits imported in 2015 (in kg)");
 
