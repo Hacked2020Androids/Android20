@@ -36,6 +36,8 @@ public class DashboardActivity extends AppCompatActivity {
             }
         });
 
+
+
         List<DataEntry> data = new ArrayList<>();
         data.add(new ValueDataEntry("Apples", 6371664));
         data.add(new ValueDataEntry("Pears", 789622));
