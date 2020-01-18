@@ -1,0 +1,40 @@
+{
+  "project_info": {
+    "project_number": "1081594236021",
+    "firebase_url": "https://hacked2020android.firebaseio.com",
+    "project_id": "hacked2020android",
+    "storage_bucket": "hacked2020android.appspot.com"
+  },
+  "client": [
+    {
+      "client_info": {
+        "mobilesdk_app_id": "1:1081594236021:android:36830396e6345745a5bc3c",
+        "android_client_info": {
+          "package_name": "com.FoodViz"
+        }
+      },
+      "oauth_client": [
+        {
+          "client_id": "1081594236021-jp28tl3oj17ne0hj20nmpeqad4v888gg.apps.googleusercontent.com",
+          "client_type": 3
+        }
+      ],
+      "api_key": [
+        {
+          "current_key": "AIzaSyCxcbMQPo4TVSzyUxXFTHslyaBdIOTcKmA"
+        }
+      ],
+      "services": {
+        "appinvite_service": {
+          "other_platform_oauth_client": [
+            {
+              "client_id": "1081594236021-jp28tl3oj17ne0hj20nmpeqad4v888gg.apps.googleusercontent.com",
+              "client_type": 3
+            }
+          ]
+        }
+      }
+    }
+  ],
+  "configuration_version": "1"
+}
