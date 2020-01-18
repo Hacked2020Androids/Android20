@@ -8,6 +8,8 @@ import androidx.appcompat.widget.AppCompatTextView;
 import android.content.Intent;
 import android.os.Build;
 import android.os.Bundle;
+import android.text.Editable;
+import android.util.Log;
 import android.view.View;
 import android.view.WindowManager;
 import android.widget.EditText;
@@ -24,22 +26,27 @@ public class Register extends AppCompatActivity {
                     WindowManager.LayoutParams.FLAG_TRANSLUCENT_STATUS);
         }
 
-        final AppCompatEditText usernameInfo = findViewById(R.id.username);
-        final String usernameParsed = usernameInfo.getText().toString();
-        final AppCompatEditText passwordInfo = findViewById(R.id.password);
-        final String pwParsed = passwordInfo.getText().toString();
+        final AppCompatEditText usernameInfo = findViewById(R.id.userName);
+        final Editable usernameParsed = usernameInfo.getText();
+        final AppCompatEditText passwordInfo = findViewById(R.id.passWord);
+        final Editable pwParsed = passwordInfo.getText();
         final EditText confirmPW = findViewById(R.id.password_veri);
-        final String pwVeriParsed = confirmPW.getText().toString();
-        final boolean nonEmpty = (pwParsed != "" || usernameParsed != "" || pwVeriParsed != "");
+        final Editable pwVeriParsed = confirmPW.getText();
 
         final AppCompatButton registerBtn = findViewById(R.id.signup_btn);
         registerBtn.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
-                if(nonEmpty && (pwParsed!= pwVeriParsed)) {
-                    Toast.makeText(Register.this, "Passwords Do not Match", Toast.LENGTH_SHORT).show();
+                if(pwParsed.toString().isEmpty() || usernameParsed.toString().isEmpty() || pwVeriParsed.toString().isEmpty()) {
+                    Toast.makeText(Register.this, "Error: Please add your information", Toast.LENGTH_SHORT).show();
                 }
-                Toast.makeText(Register.this, usernameParsed, Toast.LENGTH_SHORT).show();
+                else if (!pwParsed.toString().equals(pwVeriParsed.toString())) {
+                    Toast.makeText(Register.this, "Error: Password do not match", Toast.LENGTH_SHORT).show();
+                }
+//                else {
+//                    Toast.makeText(Register.this, usernameParsed.toString(), Toast.LENGTH_SHORT).show();
+//                }
+//                Toast.makeText(Register.this, nonEmpty, Toast.LENGTH_SHORT).show();
             }
             });
 
