@@ -1,6 +1,8 @@
 package com.example.myapplication;
 
 import androidx.appcompat.app.AppCompatActivity;
+import androidx.appcompat.widget.AppCompatButton;
+import androidx.appcompat.widget.AppCompatEditText;
 import androidx.appcompat.widget.AppCompatTextView;
 
 import android.content.Intent;
@@ -12,7 +14,9 @@ import android.text.Spanned;
 import android.text.style.ForegroundColorSpan;
 import android.view.View;
 import android.view.WindowManager;
+import android.widget.EditText;
 import android.widget.TextView;
+import android.widget.Toast;
 
 public class Register extends AppCompatActivity {
 
@@ -25,12 +29,30 @@ public class Register extends AppCompatActivity {
                     WindowManager.LayoutParams.FLAG_TRANSLUCENT_STATUS);
         }
 
-        final AppCompatTextView signUpLink = findViewById(R.id.login_link);
-        signUpLink.setOnClickListener(new View.OnClickListener() {
+        final AppCompatEditText usernameInfo = findViewById(R.id.username);
+        final String usernameParsed = usernameInfo.getText().toString();
+        final AppCompatEditText passwordInfo = findViewById(R.id.password);
+        final String pwParsed = passwordInfo.getText().toString();
+        final EditText confirmPW = findViewById(R.id.password_veri);
+        final String pwVeriParsed = confirmPW.getText().toString();
+        final boolean nonEmpty = (pwParsed != "" || usernameParsed != "" || pwVeriParsed != "");
+
+        final AppCompatButton registerBtn = findViewById(R.id.signup_btn);
+        registerBtn.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
-                Intent loginScreen = new Intent(Register.this, Login.class);
-                startActivity(loginScreen);
+                if(nonEmpty && (pwParsed!= pwVeriParsed)) {
+                    Toast.makeText(Register.this, "Passwords Do not Match", Toast.LENGTH_SHORT).show();
+                }
+                Toast.makeText(Register.this, usernameParsed, Toast.LENGTH_SHORT).show();
+            }
+            });
+
+            final AppCompatTextView signUpLink = findViewById(R.id.login_link);
+        signUpLink.setOnClickListener(new View.OnClickListener() {
+                public void onClick (View view){
+                Intent signUpScreen = new Intent(Register.this, Login.class);
+                startActivity(signUpScreen);
                 finish();
             }
         });

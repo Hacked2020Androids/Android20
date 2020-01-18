@@ -35,6 +35,7 @@ public class Login extends AppCompatActivity {
 
         logo.setText(modifiedLogoText);
 
+
         final AppCompatTextView signUpLink = findViewById(R.id.signup_link);
         signUpLink.setOnClickListener(new View.OnClickListener() {
             @Override
