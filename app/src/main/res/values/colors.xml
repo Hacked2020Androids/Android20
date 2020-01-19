@@ -24,4 +24,5 @@
     <color name="GoldButtonColor">@color/colorAccent</color>
     <color name="CustomButtonColor">#F3B61F</color>
     <color name="lightGrey">#E0E0E0</color>
+    <color name="black">#00000</color>
 </resources>
