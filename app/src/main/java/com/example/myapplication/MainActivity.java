@@ -13,6 +13,7 @@ import android.content.Intent;
 import android.os.Bundle;
 import android.os.strictmode.IntentReceiverLeakedViolation;
 import android.util.Log;
+import android.view.Menu;
 import android.view.MotionEvent;
 import android.view.View;
 import android.widget.Adapter;
@@ -21,6 +22,7 @@ import android.widget.ArrayAdapter;
 import android.widget.Button;
 import android.widget.ListView;
 import android.widget.Toast;
+import android.widget.Toolbar;
 
 import com.google.android.gms.tasks.OnFailureListener;
 import com.google.android.gms.tasks.OnSuccessListener;
@@ -40,7 +42,7 @@ import static com.google.android.gms.common.internal.safeparcel.SafeParcelable.N
 import static com.google.api.MetricDescriptor.MetricKind.DELTA;
 
 public class MainActivity extends AppCompatActivity {
-    Button AddMusic;
+    Button AddMusic, dashBoardButton;
     private RecyclerView recyclerView;
     private songAdapter adapter;
     ListView songList;
@@ -59,10 +61,12 @@ public class MainActivity extends AppCompatActivity {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_main);
         AddMusic = findViewById(R.id.addMusic);
+        dashBoardButton = findViewById(R.id.gotoDashboard);
         songDataList = new ArrayList<Song>();
         songList = findViewById(R.id.songList);
         final ArrayAdapter songAdapter = new songAdapter(this, songs);
         songList.setAdapter(songAdapter);
+
         AddMusic.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
@@ -71,7 +75,14 @@ public class MainActivity extends AppCompatActivity {
                 finish();
             }
         });
-
+        dashBoardButton.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                Intent intent = new Intent(MainActivity.this, DashboardActivity.class);
+                startActivity(intent);
+                finish();
+            }
+        });
 
         songCollectionReference.addSnapshotListener(new EventListener<QuerySnapshot>() {
             @Override
@@ -151,4 +162,5 @@ public class MainActivity extends AppCompatActivity {
 
 
     }
+   
 }
