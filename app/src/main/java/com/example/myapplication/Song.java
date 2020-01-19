@@ -2,7 +2,15 @@ package com.example.myapplication;
 
 public class Song {
 
-    String name, description, type;
+    String name, description, type, ID;
+
+    public String getID() {
+        return ID;
+    }
+
+    public void setID(String ID) {
+        this.ID = ID;
+    }
 
     public Song(String name, String description, String type) {
         this.name = name;
