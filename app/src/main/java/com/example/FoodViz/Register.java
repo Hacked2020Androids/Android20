@@ -1,14 +1,10 @@
 package com.example.FoodViz;
 
-<<<<<<< HEAD
 import androidx.annotation.NonNull;
 import androidx.appcompat.app.AppCompatActivity;
 import androidx.appcompat.widget.AppCompatButton;
 import androidx.appcompat.widget.AppCompatEditText;
 import androidx.appcompat.widget.AppCompatTextView;
-
-=======
->>>>>>> VictorTest
 import android.content.Intent;
 import android.os.Build;
 import android.os.Bundle;
@@ -19,20 +15,21 @@ import android.view.WindowManager;
 import android.widget.EditText;
 import android.widget.Toast;
 
-<<<<<<< HEAD
+import com.google.android.gms.tasks.OnCompleteListener;
 import com.google.android.gms.tasks.OnFailureListener;
 import com.google.android.gms.tasks.OnSuccessListener;
-=======
 import androidx.appcompat.app.AppCompatActivity;
 import androidx.appcompat.widget.AppCompatButton;
 import androidx.appcompat.widget.AppCompatEditText;
 import androidx.appcompat.widget.AppCompatTextView;
 
->>>>>>> VictorTest
+import com.google.android.gms.tasks.Task;
 import com.google.firebase.auth.FirebaseAuth;
 import com.google.firebase.auth.FirebaseUser;
 import com.google.firebase.firestore.CollectionReference;
 import com.google.firebase.firestore.FirebaseFirestore;
+import com.google.firebase.firestore.Query;
+import com.google.firebase.firestore.QuerySnapshot;
 
 import java.util.HashMap;
 import java.util.Map;
@@ -53,7 +50,7 @@ public class Register extends AppCompatActivity {
         // instance of database
         db = FirebaseFirestore.getInstance();
 
-        final CollectionReference collectionReference = db.collection("Users");
+        final CollectionReference collectionReference = db.collection("User");
         final AppCompatEditText usernameInfo = findViewById(R.id.username);
         final Editable usernameParsed = usernameInfo.getText();
         final AppCompatEditText passwordInfo = findViewById(R.id.password);
@@ -65,19 +62,28 @@ public class Register extends AppCompatActivity {
         registerBtn.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
+                User newUser = new User(usernameParsed.toString(), pwParsed.toString());
                 if (pwParsed.toString().isEmpty() || usernameParsed.toString().isEmpty() || pwVeriParsed.toString().isEmpty()) {
                     Toast.makeText(Register.this, "Error: Please add information", Toast.LENGTH_SHORT).show();
                 } else if (!(pwParsed.toString().equals(pwVeriParsed.toString()))) {
                     Toast.makeText(Register.this, "Passwords Do not Match", Toast.LENGTH_SHORT).show();
                 }
-                else {
-                    User newUser = new User(usernameParsed.toString(), pwParsed.toString());
 
+                Query query = db.collection("users").whereEqualTo("username", newUser.getUsername());
+                    query.get().addOnCompleteListener(new OnCompleteListener<QuerySnapshot>() {
+                        @Override
+                        public void onComplete(@NonNull Task<QuerySnapshot> task) {
+                            if (task.getResult() != null && task.getResult().size() > 0) {
+                                Toast.makeText(Register.this, "Error: Username already exists", Toast.LENGTH_SHORT).show();
+                            }
+                        }
+                    }));
+                else {
                     HashMap<String, Object> user = new HashMap<>();
                     user.put("username", newUser.getUsername());
                     user.put("password", newUser.getPassword());
 
-                    final CollectionReference collectionReference = db.collection("users");
+                    final CollectionReference collectionReference = db.collection("User");
                     collectionReference.document(newUser.getUsername())
                             .set(user)
                             .addOnSuccessListener(new OnSuccessListener<Void>() {
@@ -92,7 +98,6 @@ public class Register extends AppCompatActivity {
                                     Log.w("Failed to add user", "Error writing document", e);
                                 }
                             });
-
                     Toast.makeText(Register.this, "Successfully Signed Up", Toast.LENGTH_SHORT).show();
                     Intent mainActivityIntent = new Intent(Register.this, MainActivity.class);
                     startActivity(mainActivityIntent);
