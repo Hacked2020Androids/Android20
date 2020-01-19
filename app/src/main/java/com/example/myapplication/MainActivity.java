@@ -77,7 +77,7 @@ public class MainActivity extends AppCompatActivity {
                 songs.clear();
                 for (QueryDocumentSnapshot doc : queryDocumentSnapshots) {
                     Log.d("TEST", String.valueOf(doc.getData().get("Province")));
-                    String songId = doc.getId();
+                    String songId = (String) doc.getData().get("SongId");
                     String songName = (String) doc.getData().get("SongName");
                     String description = (String) doc.getData().get("Description");
                     String songType = (String) doc.getData().get("SongType");
@@ -109,12 +109,12 @@ public class MainActivity extends AppCompatActivity {
 //            }
 //        });
 
-        songList.setOnItemClickListener(new AdapterView.OnItemClickListener() {
+        songList.setOnItemLongClickListener(new AdapterView.OnItemLongClickListener() {
             @Override
-            public void onItemClick(AdapterView<?> parent, View view, int position, long id) {
+            public boolean onItemLongClick(AdapterView<?> parent, View view, int position, long id) {
                 view.setSelected(true);
                 final int selectedSong = position;
-                final Song song = songDataList.get(selectedSong);
+                final Song song = songs.get(selectedSong);
 
                 new AlertDialog.Builder(MainActivity.this)
                         .setIcon(android.R.drawable.ic_delete)
@@ -137,13 +137,50 @@ public class MainActivity extends AppCompatActivity {
                                                 Log.w("Error", "Error deleting song");
                                             }
                                         });
-                                songDataList.remove(selectedSong);
+                                songs.remove(selectedSong);
                                 songAdapter.notifyDataSetChanged();
                             }
                         })
                         .setNegativeButton("No", null)
                         .show();
+                return false;
             }
         });
+//        songList.setOnItemClickListener(new AdapterView.OnItemClickListener() {
+//            @Override
+//            public void onItemClick(AdapterView<?> parent, View view, int position, long id) {
+//                view.setSelected(true);
+//                final int selectedSong = position;
+//                final Song song = songDataList.get(selectedSong);
+//
+//                new AlertDialog.Builder(MainActivity.this)
+//                        .setIcon(android.R.drawable.ic_delete)
+//                        .setTitle("Are you sure")
+//                        .setMessage("Would you like to delete this song?")
+//                        .setPositiveButton("Yes", new DialogInterface.OnClickListener() {
+//
+//                            @Override
+//                            public void onClick(DialogInterface dialog, int which) {
+//                                db.collection("Videos").document(song.getID()).delete()
+//                                        .addOnSuccessListener(new OnSuccessListener<Void>() {
+//                                            @Override
+//                                            public void onSuccess(Void aVoid) {
+//                                                Log.d("Okay", "DocumentSnapshot sucessfully deleted");
+//                                            }
+//                                        })
+//                                        .addOnFailureListener(new OnFailureListener() {
+//                                            @Override
+//                                            public void onFailure(@NonNull Exception e) {
+//                                                Log.w("Error", "Error deleting song");
+//                                            }
+//                                        });
+//                                songDataList.remove(selectedSong);
+//                                songAdapter.notifyDataSetChanged();
+//                            }
+//                        })
+//                        .setNegativeButton("No", null)
+//                        .show();
+//            }
+//        });
     }
 }
