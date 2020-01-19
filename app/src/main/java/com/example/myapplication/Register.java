@@ -1,36 +1,29 @@
 package com.example.myapplication;
 
-import androidx.annotation.NonNull;
+import android.content.Intent;
+import android.os.Build;
+import android.os.Bundle;
+import android.text.Editable;
+import android.util.Log;
+import android.view.View;
+import android.view.WindowManager;
+import android.widget.EditText;
+import android.widget.Toast;
+
+import androidx.annotation.Nullable;
 import androidx.appcompat.app.AppCompatActivity;
 import androidx.appcompat.widget.AppCompatButton;
 import androidx.appcompat.widget.AppCompatEditText;
 import androidx.appcompat.widget.AppCompatTextView;
 
-import android.content.Intent;
-import android.graphics.Color;
-import android.os.Build;
-import android.os.Bundle;
-import android.text.Editable;
-import android.text.SpannableString;
-import android.text.Spanned;
-import android.text.style.ForegroundColorSpan;
-import android.util.Log;
-import android.view.View;
-import android.view.WindowManager;
-import android.widget.EditText;
-import android.widget.TextView;
-import android.widget.Toast;
-
-import com.google.android.gms.tasks.OnCompleteListener;
-import com.google.android.gms.tasks.OnFailureListener;
-import com.google.android.gms.tasks.OnSuccessListener;
-import com.google.android.gms.tasks.Task;
-import com.google.firebase.auth.FirebaseAuth;
 import com.google.firebase.firestore.CollectionReference;
+import com.google.firebase.firestore.EventListener;
 import com.google.firebase.firestore.FirebaseFirestore;
-import com.google.firebase.firestore.Query;
+import com.google.firebase.firestore.FirebaseFirestoreException;
+import com.google.firebase.firestore.QueryDocumentSnapshot;
 import com.google.firebase.firestore.QuerySnapshot;
 
+import java.util.ArrayList;
 import java.util.HashMap;
 
 public class Register extends AppCompatActivity {
@@ -59,58 +52,49 @@ public class Register extends AppCompatActivity {
         registerBtn.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
-                User newUser = new User(usernameParsed.toString(), pwParsed.toString());
+                final User newUser = new User(usernameParsed.toString(), pwParsed.toString());
                 if (pwParsed.toString().isEmpty() || usernameParsed.toString().isEmpty() || pwVeriParsed.toString().isEmpty()) {
                     Toast.makeText(Register.this, "Error: Please add information", Toast.LENGTH_SHORT).show();
                 } else if (!(pwParsed.toString().equals(pwVeriParsed.toString()))) {
                     Toast.makeText(Register.this, "Passwords Do not Match", Toast.LENGTH_SHORT).show();
                 }
 
-//                Query query = db.collection("users").whereEqualTo("username", newUser.getUsername());
-//                query.get().addOnCompleteListener(new OnCompleteListener<QuerySnapshot>() {
-//                    @Override
-//                    public void onComplete(@NonNull Task<QuerySnapshot> task) {
-//                        if (task.getResult() != null && task.getResult().size() > 0) {
-//                            Toast.makeText(Register.this, "Error: Username already exists", Toast.LENGTH_SHORT).show();
-//                        }
-//                    }
-//                });
-                else {
-                    HashMap<String, Object> user = new HashMap<>();
-                    user.put("username", newUser.getUsername());
-                    user.put("password", newUser.getPassword());
+                final HashMap<String, Object> user = new HashMap<>();
+                user.put("username", newUser.getUsername());
+                user.put("password", newUser.getPassword());
 
-                    final CollectionReference collectionReference = db.collection("User");
-                    collectionReference.document(newUser.getUsername())
-                            .set(user)
-                            .addOnSuccessListener(new OnSuccessListener<Void>() {
-                                @Override
-                                public void onSuccess(Void aVoid) {
-                                    Log.d("thisActivity", "DocumentSnapshot successfully written!");
-                                }
-                            })
-                            .addOnFailureListener(new OnFailureListener() {
-                                @Override
-                                public void onFailure(@NonNull Exception e) {
-                                    Log.w("Failed to add user", "Error writing document", e);
-                                }
-                            });
-                    Toast.makeText(Register.this, "Successfully Signed Up", Toast.LENGTH_SHORT).show();
-                    Intent userInputIntent = new Intent(Register.this, UserInputActivity.class);
-                    startActivity(userInputIntent);
-                    finish();
+                final CollectionReference collectionReference = db.collection("User");
+                final ArrayList userIdList = new ArrayList();
+                collectionReference.addSnapshotListener(new EventListener<QuerySnapshot>() {
+                    @Override
+                    public void onEvent(@Nullable QuerySnapshot queryDocumentSnapshots, @Nullable FirebaseFirestoreException e) {
+                        for (QueryDocumentSnapshot doc : queryDocumentSnapshots) {
+                            Log.d("TEST", String.valueOf(doc.getData().get("User")));
+                            String UserID = doc.getId();
+                            userIdList.add(UserID);
+
+                            if (userIdList.contains(newUser.getUsername())) {
+                                Toast.makeText(Register.this, "ERROR: User Exists", Toast.LENGTH_SHORT).show();
+                            }
+                            else {
+                                Toast.makeText(Register.this, "Successfully Registered", Toast.LENGTH_SHORT).show();
+                                Intent userInputIntent = new Intent(Register.this, UserInputActivity.class);
+                                startActivity(userInputIntent);
+                                finish();
+                            }
+
+                        final AppCompatTextView loginLink = findViewById(R.id.login_link);
+                        loginLink.setOnClickListener(new View.OnClickListener() {
+                            public void onClick(View view) {
+                                Intent loginScreen = new Intent(Register.this, Login.class);
+                                startActivity(loginScreen);
+                                finish();
+                            }
+                        });
+                    }
                 }
-            }
-        });
-
-        final AppCompatTextView signUpLink = findViewById(R.id.login_link);
-        signUpLink.setOnClickListener(new View.OnClickListener() {
-            public void onClick (View view){
-                Intent signUpScreen = new Intent(Register.this, Login.class);
-                startActivity(signUpScreen);
-                finish();
-            }
-        });
-
-    }
+            });
+        }
+    });
+}
 }
