@@ -83,16 +83,15 @@ public class Register extends AppCompatActivity {
                                 finish();
                             }
 
-                        final AppCompatTextView signUpLink = findViewById(R.id.login_link);
-                        signUpLink.setOnClickListener(new View.OnClickListener() {
+                        final AppCompatTextView loginLink = findViewById(R.id.login_link);
+                        loginLink.setOnClickListener(new View.OnClickListener() {
                             public void onClick(View view) {
-                                Intent signUpScreen = new Intent(Register.this, Login.class);
-                                startActivity(signUpScreen);
+                                Intent loginScreen = new Intent(Register.this, Login.class);
+                                startActivity(loginScreen);
                                 finish();
                             }
                         });
                     }
-
                 }
             });
         }
