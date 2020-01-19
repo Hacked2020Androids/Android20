@@ -45,6 +45,20 @@
             android:layout_height="wrap_content">
 
         </EditText>
+        <TextView
+            android:layout_width="match_parent"
+            android:layout_height="50dp"
+            android:text="What kind of song is this?"
+            android:textSize="30dp">
+
+        </TextView>
+        <Spinner
+            android:id="@+id/songType"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            >
+
+        </Spinner>
 
         <Button
             android:id="@+id/save_button"
