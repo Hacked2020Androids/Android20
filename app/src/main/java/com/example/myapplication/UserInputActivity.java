@@ -4,6 +4,7 @@ import androidx.annotation.NonNull;
 import androidx.appcompat.app.AppCompatActivity;
 import androidx.recyclerview.widget.RecyclerView;
 
+import android.content.Intent;
 import android.os.Bundle;
 import android.util.Log;
 import android.view.CollapsibleActionView;
@@ -17,9 +18,11 @@ import android.widget.Spinner;
 import com.google.android.gms.tasks.OnFailureListener;
 import com.google.android.gms.tasks.OnSuccessListener;
 import com.google.firebase.FirebaseApp;
+import com.google.firebase.Timestamp;
 import com.google.firebase.firestore.CollectionReference;
 import com.google.firebase.firestore.DocumentReference;
 import com.google.firebase.firestore.FirebaseFirestore;
+import com.google.firebase.firestore.auth.User;
 
 import java.util.HashMap;
 
@@ -62,8 +65,13 @@ public class UserInputActivity extends AppCompatActivity {
                 HashMap<String, Object> data = new HashMap<>();
                 String locationName = location.getText().toString();
                 String otherStuff = stuff.getText().toString();
-                data.put("placeName", locationName);
-                db.collection("Videos").document(songName)
+                String songID = String.valueOf(Timestamp.now().hashCode());
+                Song song = new Song(locationName, otherStuff , songName);
+                song.setID(songID);
+                data.put("Place", locationName);
+                data.put("Description", otherStuff);
+                data.put("SongType", songName);
+                db.collection("Videos").document(songID)
                         .set(data)
                         .addOnSuccessListener(new OnSuccessListener<Void>() {
                             @Override
@@ -77,9 +85,10 @@ public class UserInputActivity extends AppCompatActivity {
                                 Log.w("test", "Error writing document", e);
                             }
                         });
+                Intent MainActivity = new Intent(UserInputActivity.this, com.example.myapplication.MainActivity.class);
+                startActivity(MainActivity);
             }
         });
-
 
     }
 

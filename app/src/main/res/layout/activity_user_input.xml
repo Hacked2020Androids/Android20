@@ -4,7 +4,9 @@
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
+    android:background="@color/cardview_shadow_end_color"
     tools:context=".UserInputActivity">
+
     <LinearLayout
         android:id="@+id/background_pic"
         android:layout_width="match_parent"
@@ -17,44 +19,68 @@
         android:layout_height="match_parent"
         android:layout_marginTop="120dp"
         android:orientation="vertical">
+
         <TextView
             android:layout_width="match_parent"
-            android:layout_height="50dp"
-            android:text="Put location name here"
-            android:textSize="40dp">
+            android:layout_height="wrap_content"
+            android:text="Song's Name:"
+            android:textSize="25dp"
+            android:layout_marginHorizontal="10dp"
+            android:padding="15dp">
 
         </TextView>
         <EditText
             android:id="@+id/locationName"
             android:layout_width="match_parent"
-            android:layout_height="wrap_content">
+            android:layout_height="wrap_content"
+            android:layout_centerInParent="true"
+            android:layout_marginHorizontal="10dp"
+            android:hint="Location"
+            android:padding="15dp"
+            android:textColorHint="#fff"
+            android:background="@drawable/button_background_gradient">
 
         </EditText>
+
         <TextView
+
             android:layout_width="match_parent"
-            android:layout_height="50dp"
-            android:text="Put other stuff here"
-            android:textSize="40dp">
+            android:layout_height="wrap_content"
+            android:text="Song Description:"
+            android:textSize="25dp"
+            android:layout_marginHorizontal="10dp"
+            android:padding="15dp">
 
         </TextView>
         <EditText
             android:id="@+id/stuff"
-            android:layout_width="match_parent"
-            android:layout_height="wrap_content">
+            android:layout_width="fill_parent"
+            android:layout_height="wrap_content"
+            android:layout_centerInParent="true"
+            android:layout_marginHorizontal="10dp"
+            android:hint="Other Stuff"
+            android:padding="15dp"
+            android:textColorHint="#fff"
+            android:background="@drawable/button_background_gradient">
 
         </EditText>
+
         <TextView
             android:layout_width="match_parent"
-            android:layout_height="50dp"
+            android:layout_height="wrap_content"
+            android:layout_marginHorizontal="10dp"
             android:text="What kind of song is this?"
-            android:textSize="30dp">
+            android:textSize="25sp"
+            android:padding="15dp">
 
         </TextView>
+
         <Spinner
             android:id="@+id/songType"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
-            >
+            android:layout_marginHorizontal="10dp"
+            android:padding="15dp">
 
         </Spinner>
 
@@ -63,8 +89,8 @@
             android:layout_width="70dp"
             android:layout_height="70dp"
             android:layout_gravity="center"
-            android:layout_marginStart="180dp"
             android:layout_margin="200dp"
+            android:layout_marginStart="180dp"
             android:background="@drawable/round_button"
             android:gravity="center"
             android:shadowColor="@color/colorAccent"
