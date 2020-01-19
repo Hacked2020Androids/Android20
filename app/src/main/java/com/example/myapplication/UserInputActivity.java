@@ -1,3 +1,4 @@
+
 package com.example.myapplication;
 
 import androidx.annotation.NonNull;
@@ -73,7 +74,8 @@ public class UserInputActivity extends AppCompatActivity {
                 // location is song name
                 data.put("SongName", locationName);
                 data.put("Description", otherStuff);
-                data.put("SongType", songName); 
+                data.put("SongType", songName);
+                data.put("SongId", songID);
                 db.collection("Videos").document(songID)
                         .set(data)
                         .addOnSuccessListener(new OnSuccessListener<Void>() {
