@@ -14,6 +14,7 @@ import android.widget.ArrayAdapter;
 import android.widget.Button;
 import android.widget.EditText;
 import android.widget.Spinner;
+import android.widget.Toast;
 
 import com.google.android.gms.tasks.OnFailureListener;
 import com.google.android.gms.tasks.OnSuccessListener;
@@ -68,25 +69,33 @@ public class UserInputActivity extends AppCompatActivity {
                 String songID = String.valueOf(Timestamp.now().hashCode());
                 Song song = new Song(locationName, otherStuff , songName);
                 song.setID(songID);
-                data.put("Place", locationName);
+                // location is song name
+                data.put("SongName", locationName);
                 data.put("Description", otherStuff);
                 data.put("SongType", songName);
-                db.collection("Videos").document(songID)
-                        .set(data)
-                        .addOnSuccessListener(new OnSuccessListener<Void>() {
-                            @Override
-                            public void onSuccess(Void aVoid) {
-                                Log.d("test", "DocumentSnapshot successfully written!");
-                            }
-                        })
-                        .addOnFailureListener(new OnFailureListener() {
-                            @Override
-                            public void onFailure(@NonNull Exception e) {
-                                Log.w("test", "Error writing document", e);
-                            }
-                        });
-                Intent MainActivity = new Intent(UserInputActivity.this, com.example.myapplication.MainActivity.class);
-                startActivity(MainActivity);
+                data.put("SongId",songID);
+                if (locationName.length() == 0){
+                    db.collection("Videos").document(songID)
+                            .set(data)
+                            .addOnSuccessListener(new OnSuccessListener<Void>() {
+                                @Override
+                                public void onSuccess(Void aVoid) {
+                                    Log.d("test", "DocumentSnapshot successfully written!");
+                                }
+                            })
+                            .addOnFailureListener(new OnFailureListener() {
+                                @Override
+                                public void onFailure(@NonNull Exception e) {
+                                    Log.w("test", "Error writing document", e);
+                                }
+                            });
+                    Intent MainActivity = new Intent(UserInputActivity.this, com.example.myapplication.MainActivity.class);
+                    startActivity(MainActivity);
+                }
+                else{
+                    Toast.makeText(UserInputActivity.this, "NO SONG NAME GIVEN", Toast.LENGTH_SHORT).show();
+                }
+
             }
         });
 

@@ -78,10 +78,10 @@ public class MainActivity extends AppCompatActivity {
                 for (QueryDocumentSnapshot doc : queryDocumentSnapshots) {
                     Log.d("TEST", String.valueOf(doc.getData().get("Province")));
                     String songId = doc.getId();
+                    String songName = (String) doc.getData().get("SongName");
                     String description = (String) doc.getData().get("Description");
-                    String place = (String) doc.getData().get("Place");
                     String songType = (String) doc.getData().get("SongType");
-                    songs.add(new Song(description, place, songType));
+                    songs.add(new Song(songName, description, songType,songId));
                 }
                 songAdapter.notifyDataSetChanged();
             }

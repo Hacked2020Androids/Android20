@@ -2,7 +2,21 @@ package com.example.myapplication;
 
 public class Song {
 
-    String name, description, type, ID;
+    String name;
+    String description;
+    String type;
+    String ID;
+
+
+
+    String place;
+
+    public Song(String name, String description, String type, String ID) {
+        this.name = name;
+        this.description = description;
+        this.type = type;
+        this.ID = ID;
+    }
 
     public String getID() {
         return ID;
