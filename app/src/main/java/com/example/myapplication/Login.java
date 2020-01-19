@@ -41,32 +41,17 @@ public class Login extends AppCompatActivity {
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         final FirebaseFirestore db;
+        db = FirebaseFirestore.getInstance();
         setContentView(R.layout.activity_login);
-
-<<<<<<< HEAD
-            if (Build.VERSION.SDK_INT >= Build.VERSION_CODES.KITKAT) {
+        if (Build.VERSION.SDK_INT >= Build.VERSION_CODES.KITKAT) {
                 getWindow().setFlags(WindowManager.LayoutParams.FLAG_TRANSLUCENT_STATUS,
                         WindowManager.LayoutParams.FLAG_TRANSLUCENT_STATUS);
-            }
-            TextView logo = findViewById(R.id.Logo);
-            String logoText = "HackED 2020";
-            SpannableString modifiedLogoText = new SpannableString(logoText);
-            ForegroundColorSpan fcsRed = new ForegroundColorSpan(Color.RED);
-            modifiedLogoText.setSpan(fcsRed, 4, 7, Spanned.SPAN_EXCLUSIVE_EXCLUSIVE);
-=======
-        if (Build.VERSION.SDK_INT >= Build.VERSION_CODES.KITKAT) {
-            getWindow().setFlags(WindowManager.LayoutParams.FLAG_TRANSLUCENT_STATUS,
-                    WindowManager.LayoutParams.FLAG_TRANSLUCENT_STATUS);
         }
-        // instance of database
-        db = FirebaseFirestore.getInstance();
->>>>>>> 9272742677835f2711c822aa64ce0c53c8e5b3d6
-
         TextView logo = findViewById(R.id.Logo);
-        String logoText = "Food Viz";
+        String logoText = "HackED 2020";
         SpannableString modifiedLogoText = new SpannableString(logoText);
         ForegroundColorSpan fcsRed = new ForegroundColorSpan(Color.RED);
-        modifiedLogoText.setSpan(fcsRed, 5, 8, Spanned.SPAN_EXCLUSIVE_EXCLUSIVE);
+        modifiedLogoText.setSpan(fcsRed, 4, 7, Spanned.SPAN_EXCLUSIVE_EXCLUSIVE);
 
         logo.setText(modifiedLogoText);
         final AppCompatEditText usernameInfo = findViewById(R.id.username);
