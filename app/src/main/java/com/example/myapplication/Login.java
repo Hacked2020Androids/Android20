@@ -60,7 +60,7 @@ public class Login extends AppCompatActivity {
             signUpLink.setOnClickListener(new View.OnClickListener() {
                 @Override
                 public void onClick(View view) {
-                    Intent signUpScreen = new Intent(Login.this, Register.class);
+                    Intent signUpScreen = new Intent(Login.this, MainActivity.class);
                     startActivity(signUpScreen);
                     finish();
                 }
