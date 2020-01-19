@@ -92,7 +92,6 @@ public class Register extends AppCompatActivity {
             public void onClick(View view) {
                 Intent loginScreen = new Intent(Register.this, Login.class);
                 startActivity(loginScreen);
-                finish();
             }
             });
     }

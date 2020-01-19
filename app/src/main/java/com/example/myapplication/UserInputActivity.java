@@ -87,6 +87,7 @@ public class UserInputActivity extends AppCompatActivity {
                         });
                 Intent MainActivity = new Intent(UserInputActivity.this, com.example.myapplication.MainActivity.class);
                 startActivity(MainActivity);
+                finish();
             }
         });
 
