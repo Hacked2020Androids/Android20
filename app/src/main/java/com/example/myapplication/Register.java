@@ -75,26 +75,25 @@ public class Register extends AppCompatActivity {
 
                             if (userIdList.contains(newUser.getUsername())) {
                                 Toast.makeText(Register.this, "ERROR: User Exists", Toast.LENGTH_SHORT).show();
-                            }
-                            else {
+                            } else {
                                 Toast.makeText(Register.this, "Successfully Registered", Toast.LENGTH_SHORT).show();
                                 Intent userInputIntent = new Intent(Register.this, UserInputActivity.class);
                                 startActivity(userInputIntent);
                                 finish();
                             }
-
-                        final AppCompatTextView loginLink = findViewById(R.id.login_link);
-                        loginLink.setOnClickListener(new View.OnClickListener() {
-                            public void onClick(View view) {
-                                Intent loginScreen = new Intent(Register.this, Login.class);
-                                startActivity(loginScreen);
-                                finish();
-                            }
-                        });
+                        }
                     }
-                }
+                });
+            }
+        });
+
+        final AppCompatTextView loginLink = findViewById(R.id.login_link);
+        loginLink.setOnClickListener(new View.OnClickListener() {
+            public void onClick(View view) {
+                Intent loginScreen = new Intent(Register.this, Login.class);
+                startActivity(loginScreen);
+                finish();
+            }
             });
-        }
-    });
-}
+    }
 }
