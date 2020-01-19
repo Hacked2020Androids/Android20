@@ -1,5 +1,6 @@
 package com.example.myapplication;
 
+import androidx.annotation.NonNull;
 import androidx.annotation.Nullable;
 import androidx.appcompat.app.AppCompatActivity;
 import androidx.recyclerview.widget.LinearLayoutManager;
@@ -9,12 +10,16 @@ import android.content.Intent;
 import android.os.Bundle;
 import android.os.strictmode.IntentReceiverLeakedViolation;
 import android.util.Log;
+import android.view.MotionEvent;
 import android.view.View;
 import android.widget.AdapterView;
 import android.widget.ArrayAdapter;
 import android.widget.Button;
 import android.widget.ListView;
+import android.widget.Toast;
 
+import com.google.android.gms.tasks.OnFailureListener;
+import com.google.android.gms.tasks.OnSuccessListener;
 import com.google.firebase.firestore.CollectionReference;
 import com.google.firebase.firestore.DocumentReference;
 import com.google.firebase.firestore.DocumentSnapshot;
@@ -26,6 +31,9 @@ import com.google.firebase.firestore.QuerySnapshot;
 
 import java.util.ArrayList;
 
+import static com.google.android.gms.common.internal.safeparcel.SafeParcelable.NULL;
+import static com.google.api.MetricDescriptor.MetricKind.DELTA;
+
 public class MainActivity extends AppCompatActivity {
     Button AddMusic;
     private RecyclerView recyclerView;
@@ -35,7 +43,8 @@ public class MainActivity extends AppCompatActivity {
     private FirebaseFirestore db;
 
     private ArrayList<Song> songs = new ArrayList<>();
-
+    float historicX = Float.NaN, historicY = Float.NaN;
+    final int DELTA = 50;
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         db = FirebaseFirestore.getInstance();
@@ -57,6 +66,7 @@ public class MainActivity extends AppCompatActivity {
         });
 
 
+
         songCollectionReference.addSnapshotListener(new EventListener<QuerySnapshot>() {
             @Override
             public void onEvent(@Nullable QuerySnapshot queryDocumentSnapshots, @Nullable FirebaseFirestoreException e) {
@@ -67,13 +77,34 @@ public class MainActivity extends AppCompatActivity {
                     String description = (String) doc.getData().get("Description");
                     String place = (String) doc.getData().get("Place");
                     String songType = (String) doc.getData().get("SongType");
-                    //     public Song(String name, String description, String type) {
                     songs.add(new Song(description, place, songType));
                 }
                 songAdapter.notifyDataSetChanged();
             }
 
         });
+        songList.setOnItemLongClickListener(new AdapterView.OnItemLongClickListener() {
+            @Override
+            public boolean onItemLongClick(AdapterView<?> parent, View view, int position, long id) {
+                songAdapter.remove(position);
+                songCollectionReference.document(songs.get(position).getID()).delete().addOnSuccessListener(new OnSuccessListener<Void>() {
+
+                    @Override
+                    public void onSuccess(Void aVoid) {
+                        Log.d("test", "Mood successfully deleted!");
+
+                    }
+                })
+                        .addOnFailureListener(new OnFailureListener() {
+                            @Override
+                            public void onFailure(@NonNull Exception e) {
+                                Log.w("Test", "Error deleting mood", e);
+                            }
+                        });
+                return false;
+            }
+        });
+
 
 
 
