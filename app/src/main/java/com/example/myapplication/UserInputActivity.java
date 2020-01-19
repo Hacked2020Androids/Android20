@@ -14,6 +14,7 @@ import android.widget.ArrayAdapter;
 import android.widget.Button;
 import android.widget.EditText;
 import android.widget.Spinner;
+import android.widget.Toast;
 import android.widget.ThemedSpinnerAdapter;
 
 import com.google.android.gms.tasks.OnFailureListener;
@@ -69,9 +70,10 @@ public class UserInputActivity extends AppCompatActivity {
                 String songID = String.valueOf(Timestamp.now().hashCode());
                 Song song = new Song(locationName, otherStuff , songName);
                 song.setID(songID);
-                data.put("Place", locationName);
+                // location is song name
+                data.put("SongName", locationName);
                 data.put("Description", otherStuff);
-                data.put("SongType", songName);
+                data.put("SongType", songName); 
                 db.collection("Videos").document(songID)
                         .set(data)
                         .addOnSuccessListener(new OnSuccessListener<Void>() {
