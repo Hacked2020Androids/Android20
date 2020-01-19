@@ -1,11 +1,14 @@
 package com.example.FoodViz;
 
+<<<<<<< HEAD
 import androidx.annotation.NonNull;
 import androidx.appcompat.app.AppCompatActivity;
 import androidx.appcompat.widget.AppCompatButton;
 import androidx.appcompat.widget.AppCompatEditText;
 import androidx.appcompat.widget.AppCompatTextView;
 
+=======
+>>>>>>> VictorTest
 import android.content.Intent;
 import android.os.Build;
 import android.os.Bundle;
@@ -16,8 +19,16 @@ import android.view.WindowManager;
 import android.widget.EditText;
 import android.widget.Toast;
 
+<<<<<<< HEAD
 import com.google.android.gms.tasks.OnFailureListener;
 import com.google.android.gms.tasks.OnSuccessListener;
+=======
+import androidx.appcompat.app.AppCompatActivity;
+import androidx.appcompat.widget.AppCompatButton;
+import androidx.appcompat.widget.AppCompatEditText;
+import androidx.appcompat.widget.AppCompatTextView;
+
+>>>>>>> VictorTest
 import com.google.firebase.auth.FirebaseAuth;
 import com.google.firebase.auth.FirebaseUser;
 import com.google.firebase.firestore.CollectionReference;
@@ -28,6 +39,7 @@ import java.util.Map;
 
 public class Register extends AppCompatActivity {
     private FirebaseAuth mAuth;
+
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         mAuth = FirebaseAuth.getInstance();
