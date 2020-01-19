@@ -17,11 +17,12 @@
         android:layout_height="match_parent"
         android:layout_marginTop="120dp"
         android:orientation="vertical">
+
         <TextView
-            android:layout_width="match_parent"
+            android:layout_width="266dp"
             android:layout_height="50dp"
-            android:text="Put location name here"
-            android:textSize="40dp">
+            android:text="Location Name"
+            android:textSize="30dp">
 
         </TextView>
         <EditText
@@ -30,8 +31,9 @@
             android:layout_height="wrap_content">
 
         </EditText>
+
         <TextView
-            android:layout_width="match_parent"
+            android:layout_width="wrap_content"
             android:layout_height="50dp"
             android:text="Put other stuff here"
             android:textSize="40dp">
