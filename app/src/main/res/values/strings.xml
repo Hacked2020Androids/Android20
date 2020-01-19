@@ -4,7 +4,14 @@
         <item>Jazz</item>
         <item>Pop</item>
         <item>Rock</item>
-        <item>hip-hop</item>
+        <item>Hip-hop</item>
+        <item>RnB</item>
+        <item>Country</item>
+        <item>EDM</item>
+        <item>Metal</item>
+        <item>MumbleRap</item>
+        <item>K-Pop</item>
+        <item>J-Pop</item>
 
     </string-array>
 </resources>

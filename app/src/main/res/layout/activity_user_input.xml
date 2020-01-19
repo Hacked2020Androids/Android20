@@ -13,54 +13,7 @@
         android:layout_height="fill_parent"
         android:orientation="horizontal">
 
-<<<<<<< HEAD
         <LinearLayout
-=======
-    </LinearLayout>
-    <LinearLayout
-        android:layout_width="fill_parent"
-        android:layout_height="fill_parent"
-        android:layout_marginTop="60dp"
-        android:orientation="vertical">
-
-        <TextView
-            android:layout_width="match_parent"
-            android:layout_height="wrap_content"
-            android:text="Name of Song:"
-            android:textStyle="bold"
-            android:textSize="25dp"
-            android:layout_marginHorizontal="10dp"
-            android:padding="15dp">
-
-        </TextView>
-        <EditText
-            android:id="@+id/locationName"
-            android:layout_width="match_parent"
-            android:layout_height="wrap_content"
-            android:layout_centerInParent="true"
-            android:layout_marginHorizontal="10dp"
-            android:hint="Ex. Gangnam Style"
-            android:padding="15dp"
-            android:textColorHint="@color/lightGrey"
-            android:background="@drawable/button_background_gradient"
-            >
-
-        </EditText>
-
-        <TextView
-
-            android:layout_width="match_parent"
-            android:layout_height="wrap_content"
-            android:text="Name of Artist:"
-            android:textStyle="bold"
-            android:textSize="25dp"
-            android:layout_marginHorizontal="10dp"
-            android:padding="15dp">
-
-        </TextView>
-        <EditText
-            android:id="@+id/stuff"
->>>>>>> ab922bf736cb7ee113185e5bec063e6a29612dd4
             android:layout_width="fill_parent"
             android:layout_height="fill_parent"
             android:layout_marginTop="60dp"
