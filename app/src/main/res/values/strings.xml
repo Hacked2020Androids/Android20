@@ -1,3 +1,10 @@
 <resources>
     <string name="app_name">HackED 2020</string>
+    <string-array name="edit_songspinner">
+        <item>Jazz</item>
+        <item>Pop</item>
+        <item>Rock</item>
+        <item>hip-hop</item>
+
+    </string-array>
 </resources>

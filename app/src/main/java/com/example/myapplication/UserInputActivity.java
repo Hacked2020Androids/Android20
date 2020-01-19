@@ -8,8 +8,11 @@ import android.os.Bundle;
 import android.util.Log;
 import android.view.CollapsibleActionView;
 import android.view.View;
+import android.widget.AdapterView;
+import android.widget.ArrayAdapter;
 import android.widget.Button;
 import android.widget.EditText;
+import android.widget.Spinner;
 
 import com.google.android.gms.tasks.OnFailureListener;
 import com.google.android.gms.tasks.OnSuccessListener;
@@ -23,16 +26,13 @@ import java.util.HashMap;
 public class UserInputActivity extends AppCompatActivity {
     EditText location, stuff;
     Button saveButton;
+    String songName;
+
     private FirebaseFirestore db;
+    Spinner songType;
     // final CollectionReference collectionReference;
 
-    public UserInputActivity(){
-        // db = FirebaseFirestore.getInstance();
 
-        //FirebaseFirestore db = FirebaseFirestore.getInstance();
-
-        // this.collectionReference  = db.collection("Location");
-    }
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
@@ -40,10 +40,22 @@ public class UserInputActivity extends AppCompatActivity {
         location = findViewById(R.id.locationName);
         stuff = findViewById(R.id.stuff);
         saveButton = findViewById(R.id.save_button);
-
+        songType = findViewById(R.id.songType);
+        final ArrayAdapter<CharSequence> songTypes = ArrayAdapter.createFromResource(this, R.array.edit_songspinner, android.R.layout.simple_list_item_1);
         db = FirebaseFirestore.getInstance();
         FirebaseFirestore.setLoggingEnabled(true);
+        songType.setAdapter(songTypes);
+        songType.setOnItemSelectedListener(new AdapterView.OnItemSelectedListener() {
+            @Override
+            public void onItemSelected(AdapterView<?> parent, View view, int position, long id) {
+                songName =songTypes.getItem(position).toString();
+            }
 
+            @Override
+            public void onNothingSelected(AdapterView<?> parent) {
+
+            }
+        });
         saveButton.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
@@ -51,7 +63,7 @@ public class UserInputActivity extends AppCompatActivity {
                 String locationName = location.getText().toString();
                 String otherStuff = stuff.getText().toString();
                 data.put("placeName", locationName);
-                db.collection("Location").document("LA")
+                db.collection("Videos").document(songName)
                         .set(data)
                         .addOnSuccessListener(new OnSuccessListener<Void>() {
                             @Override
