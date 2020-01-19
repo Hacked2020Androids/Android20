@@ -1,5 +1,6 @@
 package com.example.myapplication;
 
+import androidx.annotation.NonNull;
 import androidx.appcompat.app.AppCompatActivity;
 import androidx.appcompat.widget.AppCompatButton;
 import androidx.appcompat.widget.AppCompatEditText;
@@ -18,6 +19,11 @@ import android.view.View;
 import android.view.WindowManager;
 import android.widget.TextView;
 import android.widget.Toast;
+
+import com.google.android.gms.tasks.OnCompleteListener;
+import com.google.android.gms.tasks.Task;
+import com.google.firebase.auth.AuthResult;
+import com.google.firebase.auth.FirebaseAuth;
 
 public class Login extends AppCompatActivity {
         @Override
@@ -45,13 +51,26 @@ public class Login extends AppCompatActivity {
             loginBtn.setOnClickListener(new View.OnClickListener() {
                 @Override
                 public void onClick(View view) {
+                    final User newUser = new User(usernameParsed.toString(),pwParsed.toString());
                     if (pwParsed.toString().length() == 0 || usernameParsed.toString().length() == 0) {
                         Toast.makeText(Login.this, "Error: Please add your information", Toast.LENGTH_SHORT).show();
-                    } else {
-                        Toast.makeText(Login.this, "Successfully Logged In", Toast.LENGTH_SHORT).show();
-                        Intent mainActivityIntent = new Intent(Login.this, MainActivity.class);
-                        startActivity(mainActivityIntent);
-                        finish();
+                    }
+                    else if (newUser.getUsername().length() > 1){
+                        FirebaseAuth fAuth = FirebaseAuth.getInstance();
+                        fAuth.signInWithEmailAndPassword(newUser.getUsername(), newUser.getPassword()).addOnCompleteListener(new OnCompleteListener<AuthResult>() {
+                            @Override
+                            public void onComplete(@NonNull Task<AuthResult> task) {
+                                if (task.isSuccessful()) {
+                                    Toast.makeText(Login.this, "Successfully Logged In", Toast.LENGTH_SHORT).show();
+                                    Intent mainActivityIntent = new Intent(Login.this, MainActivity.class);
+                                    startActivity(mainActivityIntent);
+                                    finish();
+                                }
+                                else {
+                                    Toast.makeText(Login.this, newUser.getUsername(), Toast.LENGTH_SHORT).show();
+                                }
+                            }
+                        });
                     }
                 }
             });
