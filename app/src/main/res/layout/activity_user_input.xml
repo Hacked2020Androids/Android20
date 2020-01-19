@@ -45,7 +45,7 @@
             android:layout_width="wrap_content"
             android:layout_height="50dp"
             android:text="Song Description"
-            android:textSize="25dp"
+            android:textSize="25sp"
             android:layout_marginHorizontal="10dp">
 
         </TextView>
@@ -65,7 +65,7 @@
             android:layout_width="match_parent"
             android:layout_height="50dp"
             android:text="What kind of song is this?"
-            android:textSize="25dp"
+            android:textSize="25sp"
             android:layout_marginHorizontal="10dp">
 
         </TextView>
