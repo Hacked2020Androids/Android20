@@ -75,7 +75,7 @@ public class UserInputActivity extends AppCompatActivity {
                 data.put("Description", otherStuff);
                 data.put("SongType", songName);
                 data.put("SongId",songID);
-                if (locationName.length() == 0){
+                if (locationName.length() != 0){
                     db.collection("Videos").document(songID)
                             .set(data)
                             .addOnSuccessListener(new OnSuccessListener<Void>() {
