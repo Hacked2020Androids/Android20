@@ -2,16 +2,19 @@ package com.example.myapplication;
 
 import androidx.annotation.NonNull;
 import androidx.annotation.Nullable;
+import androidx.appcompat.app.AlertDialog;
 import androidx.appcompat.app.AppCompatActivity;
 import androidx.recyclerview.widget.LinearLayoutManager;
 import androidx.recyclerview.widget.RecyclerView;
 
+import android.content.DialogInterface;
 import android.content.Intent;
 import android.os.Bundle;
 import android.os.strictmode.IntentReceiverLeakedViolation;
 import android.util.Log;
 import android.view.MotionEvent;
 import android.view.View;
+import android.widget.Adapter;
 import android.widget.AdapterView;
 import android.widget.ArrayAdapter;
 import android.widget.Button;
@@ -31,6 +34,7 @@ import com.google.firebase.firestore.QuerySnapshot;
 
 import java.util.ArrayList;
 
+import static android.app.ProgressDialog.show;
 import static com.google.android.gms.common.internal.safeparcel.SafeParcelable.NULL;
 import static com.google.api.MetricDescriptor.MetricKind.DELTA;
 
@@ -45,6 +49,7 @@ public class MainActivity extends AppCompatActivity {
     private ArrayList<Song> songs = new ArrayList<>();
     float historicX = Float.NaN, historicY = Float.NaN;
     final int DELTA = 50;
+
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         db = FirebaseFirestore.getInstance();
@@ -66,7 +71,6 @@ public class MainActivity extends AppCompatActivity {
         });
 
 
-
         songCollectionReference.addSnapshotListener(new EventListener<QuerySnapshot>() {
             @Override
             public void onEvent(@Nullable QuerySnapshot queryDocumentSnapshots, @Nullable FirebaseFirestoreException e) {
@@ -83,31 +87,63 @@ public class MainActivity extends AppCompatActivity {
             }
 
         });
-        songList.setOnItemLongClickListener(new AdapterView.OnItemLongClickListener() {
+//        songList.setOnItemLongClickListener(new AdapterView.OnItemLongClickListener() {
+//            @Override
+//            public boolean onItemLongClick(AdapterView<?> parent, View view, int position, long id) {
+//                songAdapter.remove(position);
+//                songCollectionReference.document(songs.get(position).getID()).delete().addOnSuccessListener(new OnSuccessListener<Void>() {
+//
+//                    @Override
+//                    public void onSuccess(Void aVoid) {
+//                        Log.d("test", "Mood successfully deleted!");
+//
+//                    }
+//                })
+//                        .addOnFailureListener(new OnFailureListener() {
+//                            @Override
+//                            public void onFailure(@NonNull Exception e) {
+//                                Log.w("Test", "Error deleting mood", e);
+//                            }
+//                        });
+//                return false;
+//            }
+//        });
+
+        songList.setOnItemClickListener(new AdapterView.OnItemClickListener() {
             @Override
-            public boolean onItemLongClick(AdapterView<?> parent, View view, int position, long id) {
-                songAdapter.remove(position);
-                songCollectionReference.document(songs.get(position).getID()).delete().addOnSuccessListener(new OnSuccessListener<Void>() {
+            public void onItemClick(AdapterView<?> parent, View view, int position, long id) {
+                view.setSelected(true);
+                final int selectedSong = position;
+                final Song song = songDataList.get(selectedSong);
 
-                    @Override
-                    public void onSuccess(Void aVoid) {
-                        Log.d("test", "Mood successfully deleted!");
+                new AlertDialog.Builder(MainActivity.this)
+                        .setIcon(android.R.drawable.ic_delete)
+                        .setTitle("Are you sure")
+                        .setMessage("Would you like to delete this song?")
+                        .setPositiveButton("Yes", new DialogInterface.OnClickListener() {
 
-                    }
-                })
-                        .addOnFailureListener(new OnFailureListener() {
                             @Override
-                            public void onFailure(@NonNull Exception e) {
-                                Log.w("Test", "Error deleting mood", e);
+                            public void onClick(DialogInterface dialog, int which) {
+                                db.collection("Videos").document(song.getID()).delete()
+                                        .addOnSuccessListener(new OnSuccessListener<Void>() {
+                                            @Override
+                                            public void onSuccess(Void aVoid) {
+                                                Log.d("Okay", "DocumentSnapshot sucessfully deleted");
+                                            }
+                                        })
+                                        .addOnFailureListener(new OnFailureListener() {
+                                            @Override
+                                            public void onFailure(@NonNull Exception e) {
+                                                Log.w("Error", "Error deleting song");
+                                            }
+                                        });
+                                songDataList.remove(selectedSong);
+                                songAdapter.notifyDataSetChanged();
                             }
-                        });
-                return false;
+                        })
+                        .setNegativeButton("No", null)
+                        .show();
             }
         });
-
-
-
-
     }
-
 }
