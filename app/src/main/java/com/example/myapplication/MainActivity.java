@@ -3,6 +3,7 @@ package com.example.myapplication;
 import androidx.annotation.NonNull;
 import androidx.annotation.Nullable;
 import androidx.appcompat.app.AlertDialog;
+import androidx.appcompat.app.AlertDialog.Builder;
 import androidx.appcompat.app.AppCompatActivity;
 import androidx.recyclerview.widget.LinearLayoutManager;
 import androidx.recyclerview.widget.RecyclerView;
@@ -67,6 +68,7 @@ public class MainActivity extends AppCompatActivity {
             public void onClick(View v) {
                 Intent intent = new Intent(MainActivity.this, UserInputActivity.class);
                 startActivity(intent);
+                finish();
             }
         });
 
@@ -116,7 +118,7 @@ public class MainActivity extends AppCompatActivity {
                 final int selectedSong = position;
                 final Song song = songDataList.get(selectedSong);
 
-                new AlertDialog.Builder(MainActivity.this)
+                new Builder(MainActivity.this)
                         .setIcon(android.R.drawable.ic_delete)
                         .setTitle("Are you sure")
                         .setMessage("Would you like to delete this song?")
@@ -145,5 +147,12 @@ public class MainActivity extends AppCompatActivity {
                         .show();
             }
         });
-    }
-}
+//        songList.setOnItemLongClickListener(new AdapterView.OnItemLongClickListener() {
+//            @Override
+//            public boolean onItemLongClick(AdapterView<?> parent, View view, int position, long id) {
+//                Toast.makeText(MainActivity.this, "Sup", Toast.LENGTH_SHORT).show();
+//                return false;
+//        }
+//        });
+//    }
+}}
