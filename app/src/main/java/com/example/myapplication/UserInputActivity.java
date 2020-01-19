@@ -67,7 +67,7 @@ public class UserInputActivity extends AppCompatActivity {
                 String otherStuff = stuff.getText().toString();
                 String songID = String.valueOf(Timestamp.now().hashCode());
                 Song song = new Song(locationName, otherStuff , songName);
-
+                song.setID(songID);
                 data.put("Place", locationName);
                 data.put("Description", otherStuff);
                 data.put("SongType", songName);

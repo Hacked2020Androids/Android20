@@ -6,6 +6,7 @@
     android:layout_height="match_parent"
     android:background="@color/cardview_shadow_end_color"
     tools:context=".UserInputActivity">
+
     <LinearLayout
         android:id="@+id/background_pic"
         android:layout_width="match_parent"
