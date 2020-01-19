@@ -20,7 +20,7 @@
 
     <TextView
 
-        android:id="@+id/songTitle"
+        android:id="@+id/songType"
         android:layout_width="0dp"
         android:layout_height="wrap_content"
         android:layout_marginStart="56dp"
@@ -34,7 +34,7 @@
     </TextView>
 
     <TextView
-        android:id="@+id/songType"
+        android:id="@+id/songTitle"
         android:layout_width="0dp"
         android:layout_height="wrap_content"
         android:layout_marginStart="56dp"
@@ -42,7 +42,7 @@
 
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@+id/songTitle">
+        app:layout_constraintTop_toBottomOf="@+id/songType">
 
     </TextView>
 
@@ -56,7 +56,7 @@
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintHorizontal_bias="0.0"
         app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@+id/songType">
+        app:layout_constraintTop_toBottomOf="@+id/songTitle">
 
     </TextView>
 
@@ -69,7 +69,7 @@
         android:foregroundGravity="right"
         android:src="@drawable/ic_facebook"
         app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@+id/songTitle" />
+        app:layout_constraintTop_toBottomOf="@+id/songType " />
 
 
 </androidx.constraintlayout.widget.ConstraintLayout>

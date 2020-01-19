@@ -3,6 +3,7 @@ package com.example.myapplication;
 import androidx.annotation.NonNull;
 import androidx.annotation.Nullable;
 import androidx.appcompat.app.AlertDialog;
+import androidx.appcompat.app.AlertDialog.Builder;
 import androidx.appcompat.app.AppCompatActivity;
 import androidx.recyclerview.widget.LinearLayoutManager;
 import androidx.recyclerview.widget.RecyclerView;
@@ -67,6 +68,7 @@ public class MainActivity extends AppCompatActivity {
             public void onClick(View v) {
                 Intent intent = new Intent(MainActivity.this, UserInputActivity.class);
                 startActivity(intent);
+                finish();
             }
         });
 
@@ -116,7 +118,7 @@ public class MainActivity extends AppCompatActivity {
                 final int selectedSong = position;
                 final Song song = songs.get(selectedSong);
 
-                new AlertDialog.Builder(MainActivity.this)
+                new Builder(MainActivity.this)
                         .setIcon(android.R.drawable.ic_delete)
                         .setTitle("Are you sure")
                         .setMessage("Would you like to delete this song?")
@@ -146,41 +148,7 @@ public class MainActivity extends AppCompatActivity {
                 return false;
             }
         });
-//        songList.setOnItemClickListener(new AdapterView.OnItemClickListener() {
-//            @Override
-//            public void onItemClick(AdapterView<?> parent, View view, int position, long id) {
-//                view.setSelected(true);
-//                final int selectedSong = position;
-//                final Song song = songDataList.get(selectedSong);
-//
-//                new AlertDialog.Builder(MainActivity.this)
-//                        .setIcon(android.R.drawable.ic_delete)
-//                        .setTitle("Are you sure")
-//                        .setMessage("Would you like to delete this song?")
-//                        .setPositiveButton("Yes", new DialogInterface.OnClickListener() {
-//
-//                            @Override
-//                            public void onClick(DialogInterface dialog, int which) {
-//                                db.collection("Videos").document(song.getID()).delete()
-//                                        .addOnSuccessListener(new OnSuccessListener<Void>() {
-//                                            @Override
-//                                            public void onSuccess(Void aVoid) {
-//                                                Log.d("Okay", "DocumentSnapshot sucessfully deleted");
-//                                            }
-//                                        })
-//                                        .addOnFailureListener(new OnFailureListener() {
-//                                            @Override
-//                                            public void onFailure(@NonNull Exception e) {
-//                                                Log.w("Error", "Error deleting song");
-//                                            }
-//                                        });
-//                                songDataList.remove(selectedSong);
-//                                songAdapter.notifyDataSetChanged();
-//                            }
-//                        })
-//                        .setNegativeButton("No", null)
-//                        .show();
-//            }
-//        });
+
+
     }
 }

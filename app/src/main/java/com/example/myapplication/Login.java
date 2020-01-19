@@ -89,9 +89,8 @@ public class Login extends AppCompatActivity {
                                     Toast.makeText(Login.this, "Wrong Login Information", Toast.LENGTH_SHORT).show();
                                 } else {
                                     Toast.makeText(Login.this, "Successfully Logged In", Toast.LENGTH_SHORT).show();
-                                    Intent userInputIntent = new Intent(Login.this, UserInputActivity.class);
-                                    startActivity(userInputIntent);
-                                    finish();
+                                    Intent mainActivityIntent = new Intent(Login.this, MainActivity.class);
+                                    startActivity(mainActivityIntent);
                                 }
                             }
                         }
