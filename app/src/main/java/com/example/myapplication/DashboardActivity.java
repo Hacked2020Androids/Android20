@@ -1,10 +1,10 @@
 //package com.example.myapplication;
 //
 //import android.os.Bundle;
-//import androidx.appcompat.app.AppCompatActivity;
 //import android.widget.Toast;
 //
-//import com.anychart.AnyChart;
+//import androidx.appcompat.app.AppCompatActivity;
+//
 //import com.anychart.AnyChartView;
 //import com.anychart.chart.common.dataentry.DataEntry;
 //import com.anychart.chart.common.dataentry.ValueDataEntry;
@@ -37,18 +37,15 @@
 //            }
 //        });
 //
-////        List<DataEntry> data = new ArrayList<>();
-////        data.add(new ValueDataEntry("Apples", 6371664));
-////        data.add(new ValueDataEntry("Pears", 789622));
-////        data.add(new ValueDataEntry("Bananas", 7216301));
-////        data.add(new ValueDataEntry("Grapes", 1486621));
-////        data.add(new ValueDataEntry("Oranges", 1200000));
-//        DatabaseParser dataBaseParser = new DatabaseParser();
-//        List<DataEntry> data = dataBaseParser.pieChartData();
+//        List<DataEntry> data = new ArrayList<>();
+//        data.add(new ValueDataEntry("Apples", 6371664));
+//        data.add(new ValueDataEntry("Pears", 789622));
+//        data.add(new ValueDataEntry("Bananas", 7216301));
+//        data.add(new ValueDataEntry("Grapes", 1486621));
+//        data.add(new ValueDataEntry("Oranges", 1200000));
 //
 //        pie.data(data);
 //
-//        dataBaseParser.selectAll();
 //
 //        pie.title("Fruits imported in 2015 (in kg)");
 //
