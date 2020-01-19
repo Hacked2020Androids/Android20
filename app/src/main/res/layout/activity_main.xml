@@ -7,7 +7,7 @@
     <RelativeLayout
         android:layout_width="match_parent"
         android:layout_height="100dp"
-        android:background="@drawable/button_background_gradient"
+        android:background="@color/MoodFragmentBorder"
         android:orientation="horizontal">
 
         <ImageView
