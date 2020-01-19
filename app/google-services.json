@@ -1,0 +1,48 @@
+{
+  "project_info": {
+    "project_number": "641119009055",
+    "firebase_url": "https://hack20-dac97.firebaseio.com",
+    "project_id": "hack20-dac97",
+    "storage_bucket": "hack20-dac97.appspot.com"
+  },
+  "client": [
+    {
+      "client_info": {
+        "mobilesdk_app_id": "1:641119009055:android:9cd3d2ff3ef93e6b27182a",
+        "android_client_info": {
+          "package_name": "com.example.myapplication"
+        }
+      },
+      "oauth_client": [
+        {
+          "client_id": "641119009055-8g20o5rkqvh4c8i8j0k8hubhvkms89d9.apps.googleusercontent.com",
+          "client_type": 1,
+          "android_info": {
+            "package_name": "com.example.myapplication",
+            "certificate_hash": "56e49f280a63ab8e10a27e1662414f6613d6167a"
+          }
+        },
+        {
+          "client_id": "641119009055-47kafmm3mn7k2ovq8s0faku1pf4cmr94.apps.googleusercontent.com",
+          "client_type": 3
+        }
+      ],
+      "api_key": [
+        {
+          "current_key": "AIzaSyDlirD7P7DlOBMvzEPfB5kIVBQeX3kCRb4"
+        }
+      ],
+      "services": {
+        "appinvite_service": {
+          "other_platform_oauth_client": [
+            {
+              "client_id": "641119009055-47kafmm3mn7k2ovq8s0faku1pf4cmr94.apps.googleusercontent.com",
+              "client_type": 3
+            }
+          ]
+        }
+      }
+    }
+  ],
+  "configuration_version": "1"
+}

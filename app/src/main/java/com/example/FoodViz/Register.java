@@ -14,8 +14,11 @@ import android.view.WindowManager;
 import android.widget.EditText;
 import android.widget.Toast;
 
+import com.google.firebase.auth.FirebaseAuth;
+
 public class Register extends AppCompatActivity {
 
+    private FirebaseAuth mAuth;
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
@@ -25,6 +28,7 @@ public class Register extends AppCompatActivity {
                     WindowManager.LayoutParams.FLAG_TRANSLUCENT_STATUS);
         }
 
+        mAuth = FirebaseAuth.getInstance();
         final AppCompatEditText usernameInfo = findViewById(R.id.username);
         final Editable usernameParsed = usernameInfo.getText();
         final AppCompatEditText passwordInfo = findViewById(R.id.password);
