@@ -29,7 +29,7 @@
             android:layout_marginTop="45dp"
             android:layout_marginLeft="10dp"
             android:text="My Charts"
-            android:textSize="40"
+            android:textSize="40dp"
             android:textColor="@color/cardview_light_background"/>
     </RelativeLayout>
 
@@ -47,7 +47,7 @@
 
     <ListView
         android:id="@+id/listView1"
-        android:layout_marginTop="100"
+        android:layout_marginTop="100dp"
         android:layout_width="match_parent"
         android:layout_height="match_parent"
         android:layout_centerHorizontal="true" >
