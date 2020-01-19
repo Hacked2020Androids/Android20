@@ -17,22 +17,21 @@
             android:layout_width="match_parent"
             android:layout_height="match_parent"
             android:scaleType="centerCrop"
-            >
+            tools:srcCompat="@drawable/gradient_background">
 
         </ImageView>
 
-
-
     </RelativeLayout>
+
     <ImageView
         android:id="@+id/add_background_image"
         android:layout_width="30dp"
         android:layout_height="30dp"
-        android:backgroundTint="@color/colorPrimaryDark"
-        android:layout_marginTop="110dp"
         android:layout_marginLeft="365dp"
+        android:layout_marginTop="110dp"
+        android:backgroundTint="@color/colorPrimaryDark"
         android:src="@drawable/camera_info"
-        >
+        android:hapticFeedbackEnabled="true">
 
 
     </ImageView>

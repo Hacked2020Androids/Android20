@@ -17,44 +17,61 @@
         android:layout_height="match_parent"
         android:layout_marginTop="120dp"
         android:orientation="vertical">
+
         <TextView
-            android:layout_width="match_parent"
+            android:layout_width="266dp"
             android:layout_height="50dp"
-            android:text="Put location name here"
-            android:textSize="40dp">
+            android:text="Location Name"
+            android:textSize="25dp"
+            android:layout_marginHorizontal="10dp">
 
         </TextView>
         <EditText
             android:id="@+id/locationName"
             android:layout_width="match_parent"
-            android:layout_height="wrap_content">
+            android:layout_height="wrap_content"
+            android:layout_centerInParent="true"
+            android:layout_marginHorizontal="10dp"
+            android:hint="Location"
+            android:padding="15dp"
+            android:textColorHint="#fff"
+            android:background="#D3D3D3">
 
         </EditText>
+
         <TextView
-            android:layout_width="match_parent"
+            android:layout_width="wrap_content"
             android:layout_height="50dp"
             android:text="Put other stuff here"
-            android:textSize="40dp">
+            android:textSize="25dp"
+            android:layout_marginHorizontal="10dp">
 
         </TextView>
         <EditText
             android:id="@+id/stuff"
-            android:layout_width="match_parent"
-            android:layout_height="wrap_content">
+            android:layout_width="fill_parent"
+            android:layout_height="wrap_content"
+            android:layout_centerInParent="true"
+            android:layout_marginHorizontal="10dp"
+            android:hint="Other Stuff"
+            android:padding="15dp"
+            android:textColorHint="#fff"
+            android:background="#D3D3D3">
 
         </EditText>
         <TextView
             android:layout_width="match_parent"
             android:layout_height="50dp"
             android:text="What kind of song is this?"
-            android:textSize="30dp">
+            android:textSize="25dp"
+            android:layout_marginHorizontal="10dp">
 
         </TextView>
         <Spinner
             android:id="@+id/songType"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
-            >
+            android:layout_marginHorizontal="10dp">
 
         </Spinner>
 
