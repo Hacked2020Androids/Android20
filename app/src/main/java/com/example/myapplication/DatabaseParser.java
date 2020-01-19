@@ -13,15 +13,15 @@ import java.util.List;
 
 public class DatabaseParser {
 
-    private Connection connect() {
+    private Connection connect() throws SQLException {
         // SQLite connection string
-        String url = "jdbc:sqlite:/Users/jawadrizvi/Documents/HackEd2020/data/ca_videos.db";
+        String url = "jdbc:sqlite:Users/jawadrizvi/Documents/HackEd2020/data/ca_videos.db";
         Connection conn = null;
-        try {
-            conn = DriverManager.getConnection(url);
-        } catch (SQLException e) {
-            System.out.println(e.getMessage());
-        }
+//        try {
+        conn = DriverManager.getConnection(url);
+//        } catch (SQLException e) {
+//            System.out.println(e.getMessage());
+//        }
         return conn;
     }
 
@@ -57,7 +57,7 @@ public class DatabaseParser {
 
             // loop through the result set
             while (rs.next()) {
-                System.out.println(rs.getInt("id") );
+                System.out.println(rs.getString("category_id") );
             }
         } catch (SQLException e) {
             System.out.println(e.getMessage());
