@@ -71,16 +71,17 @@ public class MainActivity extends AppCompatActivity {
             @Override
             public void onEvent(@Nullable QuerySnapshot queryDocumentSnapshots, @Nullable FirebaseFirestoreException e) {
                 songs.clear();
-                for (QueryDocumentSnapshot doc : queryDocumentSnapshots){
+                for (QueryDocumentSnapshot doc : queryDocumentSnapshots) {
                     Log.d("TEST", String.valueOf(doc.getData().get("Province")));
                     String songId = doc.getId();
                     String description = (String) doc.getData().get("Description");
-                    String place = (String)doc.getData().get("Place");
+                    String place = (String) doc.getData().get("Place");
                     String songType = (String) doc.getData().get("SongType");
                     songs.add(new Song(description, place, songType));
                 }
                 songAdapter.notifyDataSetChanged();
             }
+
         });
         songList.setOnItemLongClickListener(new AdapterView.OnItemLongClickListener() {
             @Override
