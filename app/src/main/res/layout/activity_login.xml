@@ -81,21 +81,6 @@
                 android:textSize="12sp"
                 android:textStyle="bold"
                 android:drawableLeft="@drawable/ic_eye_blue_18dp" />
-
-            <CheckBox
-                android:id="@+id/rememberMe"
-                android:layout_marginTop="12.7dp"
-                android:layout_width="match_parent"
-                android:layout_height="wrap_content"
-                android:layout_weight="0"
-                android:buttonTint="#fff"
-                android:text="Remember Me"
-                android:textColor="#FFFFFF"
-                android:textColorHighlight="#1566E0"
-                android:textColorLink="#236FE2"
-                android:textCursorDrawable="@color/colorPrimary"
-                android:textStyle="bold" />
-
             <androidx.appcompat.widget.AppCompatButton
                 android:layout_marginTop="18dp"
                 android:id="@+id/login_btn"

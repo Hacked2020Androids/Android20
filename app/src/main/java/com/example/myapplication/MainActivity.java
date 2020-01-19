@@ -3,6 +3,7 @@ package com.example.myapplication;
 import androidx.annotation.NonNull;
 import androidx.annotation.Nullable;
 import androidx.appcompat.app.AlertDialog;
+import androidx.appcompat.app.AlertDialog.Builder;
 import androidx.appcompat.app.AppCompatActivity;
 import androidx.recyclerview.widget.LinearLayoutManager;
 import androidx.recyclerview.widget.RecyclerView;
@@ -67,6 +68,7 @@ public class MainActivity extends AppCompatActivity {
             public void onClick(View v) {
                 Intent intent = new Intent(MainActivity.this, UserInputActivity.class);
                 startActivity(intent);
+                finish();
             }
         });
 
@@ -77,7 +79,7 @@ public class MainActivity extends AppCompatActivity {
                 songs.clear();
                 for (QueryDocumentSnapshot doc : queryDocumentSnapshots) {
                     Log.d("TEST", String.valueOf(doc.getData().get("Province")));
-                    String songId = doc.getId();
+                    String songId = (String) doc.getData().get("SongId");
                     String songName = (String) doc.getData().get("SongName");
                     String description = (String) doc.getData().get("Description");
                     String songType = (String) doc.getData().get("SongType");
@@ -109,14 +111,14 @@ public class MainActivity extends AppCompatActivity {
 //            }
 //        });
 
-        songList.setOnItemClickListener(new AdapterView.OnItemClickListener() {
+        songList.setOnItemLongClickListener(new AdapterView.OnItemLongClickListener() {
             @Override
-            public void onItemClick(AdapterView<?> parent, View view, int position, long id) {
+            public boolean onItemLongClick(AdapterView<?> parent, View view, int position, long id) {
                 view.setSelected(true);
                 final int selectedSong = position;
-                final Song song = songDataList.get(selectedSong);
+                final Song song = songs.get(selectedSong);
 
-                new AlertDialog.Builder(MainActivity.this)
+                new Builder(MainActivity.this)
                         .setIcon(android.R.drawable.ic_delete)
                         .setTitle("Are you sure")
                         .setMessage("Would you like to delete this song?")
@@ -137,13 +139,16 @@ public class MainActivity extends AppCompatActivity {
                                                 Log.w("Error", "Error deleting song");
                                             }
                                         });
-                                songDataList.remove(selectedSong);
+                                songs.remove(selectedSong);
                                 songAdapter.notifyDataSetChanged();
                             }
                         })
                         .setNegativeButton("No", null)
                         .show();
+                return false;
             }
         });
+
+
     }
 }

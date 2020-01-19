@@ -77,8 +77,8 @@ public class Register extends AppCompatActivity {
                                 Toast.makeText(Register.this, "ERROR: User Exists", Toast.LENGTH_SHORT).show();
                             } else {
                                 Toast.makeText(Register.this, "Successfully Registered", Toast.LENGTH_SHORT).show();
-                                Intent userInputIntent = new Intent(Register.this, UserInputActivity.class);
-                                startActivity(userInputIntent);
+                                Intent mainActivityIntent = new Intent(Register.this, MainActivity.class);
+                                startActivity(mainActivityIntent);
                                 finish();
                             }
                         }
@@ -92,7 +92,6 @@ public class Register extends AppCompatActivity {
             public void onClick(View view) {
                 Intent loginScreen = new Intent(Register.this, Login.class);
                 startActivity(loginScreen);
-                finish();
             }
             });
     }
