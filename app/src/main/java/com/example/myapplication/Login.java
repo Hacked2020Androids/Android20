@@ -50,7 +50,7 @@ public class Login extends AppCompatActivity {
         loginButton.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
-                Intent dashBoardScreen = new Intent(Login.this, DashboardActivity.class);
+                Intent dashBoardScreen = new Intent(Login.this, ActivityAddStuff.class);
                 startActivity(dashBoardScreen);
                 finish();
             }
