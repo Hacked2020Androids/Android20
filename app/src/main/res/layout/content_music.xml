@@ -69,7 +69,7 @@
         android:foregroundGravity="right"
         android:src="@drawable/ic_facebook"
         app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@+id/songType " />
+        app:layout_constraintTop_toBottomOf="@+id/songType" />
 
 
 </androidx.constraintlayout.widget.ConstraintLayout>
