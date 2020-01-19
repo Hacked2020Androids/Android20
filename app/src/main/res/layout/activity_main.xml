@@ -31,7 +31,9 @@
             android:text="My Songs"
             android:textStyle="bold"
             android:textColor="@color/colorWhite"
-            android:textSize="40sp"/>
+            android:textSize="40sp">
+
+        </TextView>
     </RelativeLayout>
 
     <Button
