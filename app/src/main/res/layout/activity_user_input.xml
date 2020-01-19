@@ -6,13 +6,14 @@
     android:layout_height="match_parent"
     android:background="@color/cardview_shadow_end_color"
     tools:context=".UserInputActivity">
-    <LinearLayout
+    <androidx.appcompat.widget.AppCompatTextView
         android:id="@+id/background_pic"
         android:layout_width="match_parent"
         android:layout_height="120dp"
-        android:orientation="horizontal">
+        android:orientation="horizontal"
+        android:background="@drawable/gradient_background">
 
-    </LinearLayout>
+    </androidx.appcompat.widget.AppCompatTextView>
     <LinearLayout
         android:layout_width="match_parent"
         android:layout_height="match_parent"
@@ -24,7 +25,8 @@
             android:layout_height="50dp"
             android:text="Song's Name"
             android:textSize="25dp"
-            android:layout_marginHorizontal="10dp">
+            android:layout_marginHorizontal="18dp"
+            android:gravity="">
 
 
         </TextView>
@@ -46,7 +48,8 @@
             android:layout_height="50dp"
             android:text="Song Description"
             android:textSize="25dp"
-            android:layout_marginHorizontal="10dp">
+            android:layout_marginHorizontal="18dp"
+            android:gravity="">
 
         </TextView>
         <EditText
@@ -66,14 +69,19 @@
             android:layout_height="50dp"
             android:text="What kind of song is this?"
             android:textSize="25dp"
-            android:layout_marginHorizontal="10dp">
+            android:layout_marginHorizontal="18dp"
+            android:gravity="">
 
         </TextView>
         <Spinner
             android:id="@+id/songType"
-            android:layout_width="wrap_content"
+            android:layout_width="fill_parent"
             android:layout_height="wrap_content"
-            android:layout_marginHorizontal="10dp">
+            android:layout_centerInParent="true"
+            android:layout_marginHorizontal="10dp"
+            android:textColorHint="#fff"
+            android:background="@drawable/button_background_gradient"
+            android:padding="15dp">
 
         </Spinner>
 
