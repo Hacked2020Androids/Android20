@@ -14,8 +14,8 @@
     android:paddingLeft="10dp"
     android:paddingRight="10dp"
     android:elevation="5dp"
-    android:outlineSpotShadowColor="@color/Base"
-    android:background="@color/lightGrey"
+    android:outlineSpotShadowColor="@color/Angry"
+    android:background="@color/colorWhite"
     app:layout_scrollFlags="snap">
 
     <TextView
