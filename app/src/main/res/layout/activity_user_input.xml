@@ -13,98 +13,98 @@
         android:layout_height="fill_parent"
         android:orientation="horizontal">
 
-    </LinearLayout>
-    <LinearLayout
-        android:layout_width="fill_parent"
-        android:layout_height="fill_parent"
-        android:layout_marginTop="60dp"
-        android:orientation="vertical">
-
-        <TextView
-            android:layout_width="match_parent"
-            android:layout_height="wrap_content"
-            android:text="Name of Song"
-            android:textStyle="bold"
-            android:textSize="25dp"
-            android:layout_marginHorizontal="10dp"
-            android:padding="15dp">
-
-        </TextView>
-        <EditText
-            android:id="@+id/locationName"
-            android:layout_width="match_parent"
-            android:layout_height="wrap_content"
-            android:layout_centerInParent="true"
-            android:layout_marginHorizontal="10dp"
-            android:hint="Ex. Gangnam Style"
-            android:padding="15dp"
-            android:textColorHint="@color/lightGrey"
-            android:background="@drawable/button_background_gradient"
-            >
-
-        </EditText>
-
-        <TextView
-
-            android:layout_width="match_parent"
-            android:layout_height="wrap_content"
-            android:text="Name of Artist:"
-            android:textStyle="bold"
-            android:textSize="25dp"
-            android:layout_marginHorizontal="10dp"
-            android:padding="15dp">
-
-        </TextView>
-        <EditText
-            android:id="@+id/stuff"
+        <LinearLayout
             android:layout_width="fill_parent"
-            android:layout_height="wrap_content"
-            android:layout_centerInParent="true"
-            android:layout_marginHorizontal="10dp"
-            android:hint="Ex. PSY"
-            android:padding="15dp"
-            android:textColorHint="@color/lightGrey"
-            android:background="@drawable/button_background_gradient">
+            android:layout_height="fill_parent"
+            android:layout_marginTop="60dp"
+            android:orientation="vertical">
 
-        </EditText>
+            <TextView
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_marginHorizontal="10dp"
+                android:padding="15dp"
+                android:text="Name of Song"
+                android:textSize="25dp"
+                android:textStyle="bold">
 
-        <TextView
-            android:layout_width="match_parent"
-            android:layout_height="wrap_content"
-            android:layout_marginHorizontal="10dp"
-            android:text="What is the genre?"
-            android:textStyle="bold"
-            android:textSize="25sp"
-            android:padding="15dp">
+            </TextView>
 
-        </TextView>
+            <EditText
+                android:id="@+id/locationName"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_centerInParent="true"
+                android:layout_marginHorizontal="10dp"
+                android:background="@drawable/button_background_gradient"
+                android:hint="Ex. Gangnam Style"
+                android:padding="15dp"
+                android:textColorHint="@color/lightGrey">
 
-        <Spinner
-            android:id="@+id/songType"
-            android:layout_width="fill_parent"
-            android:layout_height="wrap_content"
-            android:layout_centerInParent="true"
-            android:layout_marginHorizontal="10dp"
-            android:padding="15dp"
-            android:textColorHint="@color/lightGrey"
-            android:background="@drawable/button_background_gradient"
-            android:spinnerMode="dropdown">
-        </Spinner>
+            </EditText>
 
-        <Button
-            android:id="@+id/save_button"
-            android:layout_width="72dp"
-            android:layout_height="72dp"
-            android:layout_gravity="center"
-            android:layout_margin="140dp"
-            android:background="@drawable/round_button"
-            android:gravity="center"
-            android:shadowColor="@color/colorAccent"
-            android:text="SAVE"
-            android:hapticFeedbackEnabled="true">
+            <TextView
 
-        </Button>
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_marginHorizontal="10dp"
+                android:padding="15dp"
+                android:text="Name of Artist:"
+                android:textSize="25dp"
+                android:textStyle="bold">
 
+            </TextView>
+
+            <EditText
+                android:id="@+id/stuff"
+                android:layout_width="fill_parent"
+                android:layout_height="wrap_content"
+                android:layout_centerInParent="true"
+                android:layout_marginHorizontal="10dp"
+                android:background="@drawable/button_background_gradient"
+                android:hint="Ex. PSY"
+                android:padding="15dp"
+                android:textColorHint="@color/lightGrey">
+
+            </EditText>
+
+            <TextView
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_marginHorizontal="10dp"
+                android:padding="15dp"
+                android:text="What is the genre?"
+                android:textSize="25sp"
+                android:textStyle="bold">
+
+            </TextView>
+
+            <Spinner
+                android:id="@+id/songType"
+                android:layout_width="fill_parent"
+                android:layout_height="wrap_content"
+                android:layout_centerInParent="true"
+                android:layout_marginHorizontal="10dp"
+                android:background="@drawable/button_background_gradient"
+                android:padding="15dp"
+                android:spinnerMode="dropdown"
+                android:textColorHint="@color/lightGrey"></Spinner>
+
+            <Button
+                android:id="@+id/save_button"
+                android:layout_width="72dp"
+                android:layout_height="72dp"
+                android:layout_gravity="center"
+                android:layout_margin="140dp"
+                android:background="@drawable/round_button"
+                android:gravity="center"
+                android:hapticFeedbackEnabled="true"
+                android:shadowColor="@color/colorAccent"
+                android:text="SAVE">
+
+            </Button>
+
+        </LinearLayout>
     </LinearLayout>
 
 </RelativeLayout>
