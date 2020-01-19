@@ -46,7 +46,7 @@ public class MainActivity extends AppCompatActivity {
         AddMusic = findViewById(R.id.addMusic);
         songDataList = new ArrayList<Song>();
         songList = findViewById(R.id.songList);
-        final ArrayAdapter songAdapter = new songAdapter(this, songDataList);
+        final ArrayAdapter songAdapter = new songAdapter(this, songs);
         songList.setAdapter(songAdapter);
         AddMusic.setOnClickListener(new View.OnClickListener() {
             @Override
